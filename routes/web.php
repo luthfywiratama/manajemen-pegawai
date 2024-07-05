@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('pegawai', PegawaiController::class);
 });
+
+Route::get('/', function () {
+    return view('admin.pages.home');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
