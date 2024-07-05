@@ -24,6 +24,8 @@
                                 <th>Alamat</th>
                                 <th>Telepon</th>
                                 <th>Email</th>
+                                <th>Gaji</th>
+                                <th>Jabatan</th>
                                 <th>Photo</th>
                                 <th>Action</th>
                             </tr>
@@ -36,6 +38,8 @@
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->telepon }}</td>
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->gaji }}</td>
+                                <td>{{ $item->jabatan }}</td>
                                 <td>
                                     <img src="{{ $item->photo  }}" width="100" alt="">
                                 </td>
@@ -45,6 +49,8 @@
                                             data-alamat="{{ $item->alamat }}"
                                             data-telepon="{{ $item->telepon }}"
                                             data-email="{{ $item->email }}"
+                                            data-gaji="{{ $item->gaji }}"
+                                            data-jabatan="{{ $item->jabatan }}"
                                             data-route="{{ route('pegawai.update', $item->id) }}"
                                             data-bs-target="#modalEdit"
                                             data-bs-toggle="modal"
@@ -100,6 +106,16 @@
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" name="email" id="email"
                             placeholder="Email" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="gaji" class="form-label">Gaji</label>
+                        <input type="number" class="form-control" name="gaji" id="gaji"
+                            placeholder="Gaji" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="jabatan" class="form-label">Jabatan</label>
+                        <input type="text" class="form-control" name="jabatan" id="jabatan"
+                            placeholder="Jabatan" />
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Photo</label>
@@ -158,6 +174,16 @@
                             placeholder="Email" />
                     </div>
                     <div class="mb-3">
+                        <label for="gaji" class="form-label">Gaji</label>
+                        <input type="number" class="form-control" name="gaji" id="gaji"
+                            placeholder="Gaji" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="jabatan" class="form-label">Jabatan</label>
+                        <input type="text" class="form-control" name="jabatan" id="jabatan"
+                            placeholder="Jabatan" />
+                    </div>
+                    <div class="mb-3">
                         <label for="" class="form-label">Photo</label>
                         <input
                         type="file"
@@ -188,18 +214,22 @@
     $(document).ready(function () {
         var pegawaiTable = $('#slider-table').DataTable()
 
-        $('.btnEditDt').click(function (e) {
+        $(document).on('click', '.btnEditDt', function (e) {
             e.preventDefault();
             var nama_lengkap = $(this).data('nama_lengkap');
             var alamat = $(this).data('alamat');
             var telepon = $(this).data('telepon');
             var email = $(this).data('email');
+            var gaji = $(this).data('gaji');
+            var jabatan = $(this).data('jabatan');
             var route = $(this).data('route');
 
             $('#modalEdit #nama_lengkap').val(nama_lengkap);
             $('#modalEdit #alamat').val(alamat);
             $('#modalEdit #telepon').val(telepon);
             $('#modalEdit #email').val(email);
+            $('#modalEdit #gaji').val(gaji);
+            $('#modalEdit #jabatan').val(jabatan);
             $('#modalEdit form').attr('action', route);
         });
     })

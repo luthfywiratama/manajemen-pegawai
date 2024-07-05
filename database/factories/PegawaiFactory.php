@@ -22,6 +22,8 @@ class PegawaiFactory extends Factory
             'telepon' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->imageUrl(),
+            'gaji' => $this->faker->numberBetween(1000000, 10000000),
+            'jabatan' => $this->faker->jobTitle(),
         ];
     }
 }

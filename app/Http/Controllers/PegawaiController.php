@@ -37,6 +37,8 @@ class PegawaiController extends Controller
             'telepon' => 'required',
             'email' => 'required|email|unique:pegawai,email',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gaji' => 'required|numeric',
+            'jabatan' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -54,6 +56,8 @@ class PegawaiController extends Controller
             'telepon' => $request->telepon,
             'email' => $request->email,
             'photo' => $photo,
+            'gaji' => $request->gaji,
+            'jabatan' => $request->jabatan
         ]);
 
         return redirect()->route('pegawai.index')->with('success', 'Data berhasil ditambahkan');
@@ -87,6 +91,8 @@ class PegawaiController extends Controller
             'telepon' => 'required',
             'email' => 'required|email|unique:pegawai,email,' . $id,
             'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'jabatan' => 'required',
+            'gaji' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -100,6 +106,8 @@ class PegawaiController extends Controller
             'alamat' => $request->alamat,
             'telepon' => $request->telepon,
             'email' => $request->email,
+            'jabatan' => $request->jabatan,
+            'gaji' => $request->gaji
         ];
 
         if($request->photo){

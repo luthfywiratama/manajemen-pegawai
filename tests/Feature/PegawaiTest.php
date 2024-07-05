@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class PegawaiTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
@@ -26,6 +27,8 @@ class PegawaiTest extends TestCase
             'alamat' => fake()->address(),
             'telepon' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
+            'gaji' => fake()->numberBetween(1000000, 10000000),
+            'jabatan' => fake()->jobTitle(),
             'photo' => fake()->imageUrl(),
         ]);
 
@@ -40,6 +43,8 @@ class PegawaiTest extends TestCase
             'alamat' => fake()->address(),
             'telepon' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
+            'gaji' => fake()->numberBetween(1000000, 10000000),
+            'jabatan' => fake()->jobTitle(),
             'photo' => fake()->imageUrl(),
         ]);
 
